@@ -11,7 +11,6 @@ addons:
     - texinfo
     - flex
     - bison
-    - device-tree-compiler
     - python
 
 # The checkout is the test we run here
@@ -37,6 +36,9 @@ env:
    - VERSION=4.12 ARCH=sparc64
    - VERSION=4.12 ARCH=v850
    - VERSION=4.12 ARCH=x86_64
+
+install:
+  - sudo apt-get install device-tree-compiler
 
 # Execute the build
 script:
