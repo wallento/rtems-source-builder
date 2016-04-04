@@ -11,7 +11,7 @@ addons:
     - texinfo
     - flex
     - bison
-    - python
+    - python-dev
 
 # The checkout is the test we run here
 # The matrix are the two build variants
@@ -42,6 +42,7 @@ install:
 
 # Execute the build
 script:
+  - export PATH=/usr/bin:$PATH
   - cd rtems
   - travis_wait 60 ../source-builder/sb-set-builder --prefix=/tmp/rsb/ $VERSION/rtems-$ARCH --log=log.txt
   - tail -n50 log.txt
