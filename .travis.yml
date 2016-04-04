@@ -10,6 +10,7 @@ addons:
     - texinfo
     - flex
     - bison
+    - device-tree-compiler
 
 # The checkout is the test we run here
 # The matrix are the two build variants
