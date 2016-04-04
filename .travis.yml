@@ -1,0 +1,42 @@
+# Run in container-based environment
+sudo: false
+
+# Install the build requirements
+addons:
+  apt:
+    packages:
+    - build-essential
+    - zlib1g-dev
+    - texinfo
+    - flex
+    - bison
+
+# The checkout is the test we run here
+# The matrix are the two build variants
+env:
+  matrix:
+   - VERSION=4.11 ARCH=arm
+   - VERSION=4.11 ARCH=avr
+   - VERSION=4.11 ARCH=bfin
+   - VERSION=4.11 ARCH=epiphany
+   - VERSION=4.11 ARCH=h8300
+   - VERSION=4.11 ARCH=i386
+   - VERSION=4.11 ARCH=lm32
+   - VERSION=4.11 ARCH=m32c
+   - VERSION=4.11 ARCH=m68k
+   - VERSION=4.11 ARCH=microblaze
+   - VERSION=4.11 ARCH=mips
+   - VERSION=4.11 ARCH=moxie
+   - VERSION=4.11 ARCH=nios2
+   - VERSION=4.11 ARCH=or1k
+   - VERSION=4.11 ARCH=powerpc
+   - VERSION=4.11 ARCH=sh
+   - VERSION=4.11 ARCH=sparc
+   - VERSION=4.11 ARCH=sparc64
+   - VERSION=4.11 ARCH=v850
+
+# Execute the build
+script:
+  - cd rtems
+  - travis_wait 60 ../source-builder/sb-set-builder --prefix=/tmp/rsb/ $VERSION/rtems-$ARCH --log=log.txt
+  - tail -n50 log.txt
