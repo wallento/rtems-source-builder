@@ -12,6 +12,7 @@ addons:
     - flex
     - bison
     - device-tree-compiler
+    - python
 
 # The checkout is the test we run here
 # The matrix are the two build variants
