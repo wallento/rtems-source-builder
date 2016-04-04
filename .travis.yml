@@ -1,5 +1,6 @@
-# Run in container-based environment
-sudo: false
+# Run in trusty because we need memory
+sudo: required
+dist: trusty
 
 # Install the build requirements
 addons:
